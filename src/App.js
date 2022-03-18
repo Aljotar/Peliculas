@@ -11,8 +11,8 @@ function App() {
     <div>
       <TheNav />
         <Row>
-          <Col className="style-generos" sm={3}><Generos /></Col>
-          <Col className="p-0" sm={9}>
+          <Col className="style-generos" sm={2}><Generos /></Col>
+          <Col className="p-0" sm={10}>
             <Caratulas />
           </Col>
         </Row>

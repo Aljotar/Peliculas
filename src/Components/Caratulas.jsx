@@ -13,7 +13,7 @@ export default function Caratulas({props}) {
     setLoading(true);
     const request = async () => {
       const response = await axios.get(
-        `https://api.tvmaze.com/search/shows?q=Animation`
+        `https://api.tvmaze.com/search/shows?q=Action`
       );
       const info = response.data;
       console.log(info);

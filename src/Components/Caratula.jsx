@@ -7,7 +7,7 @@ export default function Caratula({ caratula }) {
   const { image, name } = show;
 
   return (
-    <Card className="m-2 card-estilo" style={{ width: "10rem" }}>
+    <Card className="m-2 card-estilo" style={{ width: "15rem" }}>
       <Image
         className="p-0 card-imagen"
         variant=""

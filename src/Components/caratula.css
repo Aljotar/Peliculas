@@ -1,0 +1,28 @@
+.card-noticia{
+    width: 30rem;
+    color: rgb(112, 112, 112);
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px black;
+
+}
+.card-noticia img{
+    height: auto;
+}
+.Card-Title{
+    font-size: 30px;
+    font-weight: 700;
+    border-bottom: 2px solid rgb(251, 191, 191);
+    transition: 0.5s;
+}
+.Card-Text{
+    font-family: sans-serif;
+    font-weight: 600;
+    color: rgb(253, 253, 253);
+
+}
+.Card-Text2{
+    font-family: sans-serif;
+    font-size: 18;
+    color: rgba(238, 95, 38, 0.8);
+}
+

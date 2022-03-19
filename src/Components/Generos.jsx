@@ -1,7 +1,17 @@
-import React from "react";
-import { Container, ListGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Container, ListGroup } from "react-bootstrap";
 
-export const Generos = () => {
+export const Generos = ({caratula}) => {
+  
+
+  const [filtroGenero, setSelectCategory]= useState('')
+
+  const filtrarCategoria = (e) => {
+  const category = e.target.value;
+  setSelectCategory(category)
+  console.log(filtroGenero)
+  }
+
   return (
     <>
       <Container>
@@ -19,7 +29,7 @@ export const Generos = () => {
           GÉNEROS
         </h2>
         <ListGroup variant="flush white">
-          <ListGroup.Item>
+          <ListGroup.Item >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -33,7 +43,7 @@ export const Generos = () => {
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
               />
             </svg>
-            Accion
+            <Button onClick={filtrarCategoria} variant="outline-primary" name="Action" value="Action">Primary</Button>
           </ListGroup.Item>
           <ListGroup.Item>
             <svg

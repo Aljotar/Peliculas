@@ -1,7 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Nunito:ital@0;1&display=swap');
 body {
     display: flex;
     flex-direction: column;
+
 }
+.estilo-home{
+    width: 100%;
+    height: 100vh;
+    background-color: #132d47;
+    display: flex;
+    justify-content: space-around;
+}
+.estilo-home svg{
+    height: 2rem;
+    color: white;
+}
+.estilo-home img{
+    height: 3rem;
+    color: white;
+    align-self: center;
+    animation: log 3s infinite alternate;
+}
+@keyframes log {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 6;
+    }
+}
+
 .banner{
     background-color: #edb709;
     overflow: hidden;
@@ -10,7 +39,6 @@ body {
     margin: 0;
     background-color: #edb709;
     font-size: 11px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     position: relative;
     padding-left: 110%;
     overflow: hidden;
@@ -39,8 +67,8 @@ body {
 }
 .navbar-light .navbar-nav .nav-link{
     color: white !important;
+
     font-weight: 600;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .navbar-collapse{
     height: auto;
@@ -51,12 +79,10 @@ body {
 .titulo-generos{
     font-size: 15px;
     margin: 15px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .list-group-item{
     background-color: #132d47!important;
     font-size: 13px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: hsla(0,0%,100%,.5)!important;
     border-bottom: 1px solid hsla(0,0%,100%,.15)!important;
 }
@@ -69,7 +95,6 @@ body {
 }
 .principal h2{
     font-size: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 8px;
 }
 .card-estilo{
@@ -84,10 +109,10 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 13px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .card-imagen{
     border: none;
+    min-height: 24rem;
 }
 .card-img-bottom{
     border: none;

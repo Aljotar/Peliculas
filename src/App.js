@@ -1,23 +1,39 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { TheNav } from "./Components/TheNav";
-import Caratulas from "./Components/Caratulas";
-import Footer from "./Components/Footer";
-import { Col, Row } from "react-bootstrap";
-import { Generos } from "./Components/Generos";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { SearchPage } from "./Components/SearchPage";
+import { Home } from "./Components/Home";
 
 function App() {
+  const [caratulas, setCaratulas] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    const request = async () => {
+      const response = await axios.get(
+        `http://api.tvmaze.com/search/shows?q=star%20wars`
+      );
+      const info = response.data;
+      console.log(info);
+      setCaratulas(info);
+      setLoading(false);
+    };
+    request();
+  }, []);
+
   return (
-    <div>
-      <TheNav />
-        <Row>
-          <Col className="style-generos" sm={2}><Generos /></Col>
-          <Col className="p-0" sm={10}>
-            <Caratulas />
-          </Col>
-        </Row>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route
+          path="/search-page"
+          element={<SearchPage caratulas={caratulas} loading={loading} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -27,11 +27,24 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<Home />} />
         <Route
           path="/search-page"
           element={<SearchPage caratulas={caratulas} loading={loading} />}
         />
+
+        <Route path="/favorite">
+          
+        </Route>
+
+        <Route path="/login">
+          
+        </Route>
+
+        <Route path="/register" >
+         
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );

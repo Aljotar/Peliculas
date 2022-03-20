@@ -5,24 +5,11 @@ import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { SearchPage } from "./Components/SearchPage";
 import { Home } from "./Components/Home";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
 
 function App() {
-  const [caratulas, setCaratulas] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    const request = async () => {
-      const response = await axios.get(
-        `http://api.tvmaze.com/search/shows?q=star%20wars`
-      );
-      const info = response.data;
-      console.log(info);
-      setCaratulas(info);
-      setLoading(false);
-    };
-    request();
-  }, []);
+ 
 
   return (
     <BrowserRouter>
@@ -30,20 +17,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/search-page"
-          element={<SearchPage caratulas={caratulas} loading={loading} />}
+          element={<SearchPage />}
         />
 
-        <Route path="/favorite">
-          
-        </Route>
+        <Route path="/favorite"/>
 
-        <Route path="/login">
-          
-        </Route>
+        <Route path="/login" element={<Login />}/>
 
-        <Route path="/register" >
-         
-        </Route>
+        <Route path="/register" element={<Register />} />
 
       </Routes>
     </BrowserRouter>

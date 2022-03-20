@@ -1,0 +1,11 @@
+.register-estilo{
+    font-weight: 600;
+    height: 100vh;
+    background-color: rgb(155, 155, 155);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.register-estilo form{
+    width: 50%;
+}

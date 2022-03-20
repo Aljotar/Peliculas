@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Nunito:ital@0;1&display=swap');
+
 body {
     display: flex;
     flex-direction: column;
@@ -14,6 +15,14 @@ body {
 .estilo-home svg{
     height: 2rem;
     color: white;
+}
+.home-logo{
+    position: absolute;
+    top: 40%;
+
+}
+.home-logo a{
+    list-style: none;
 }
 .estilo-home img{
     height: 3rem;
@@ -123,19 +132,6 @@ body {
 .tituloCol1{
     font-weight: bold;
     font-size: 20px;
-}
-.text-species{
-    font-size: 20px;
-    font-family: sans-serif;
-    font-weight: 700;
-}
-.selector-species{
-    font-family: sans-serif;
-    font-size: 22px;
-    border: none;
-    color: rgb(77, 88, 102);
-    border-bottom: 1px solid rgb(148, 196, 235);
-
 }
 .footer{
     height: 18vh;

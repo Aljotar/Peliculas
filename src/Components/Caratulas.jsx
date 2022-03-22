@@ -4,26 +4,25 @@ import React, { useState } from "react";
 
 export default function Caratulas( {caratulas, loading} ) {
   
-
-  const [caratula, setCaratulas] = useState(caratulas);
-  
   const [busqueda, setbusqueda] = useState("");
 
   const handleChange = (e) => {
     setbusqueda(e.target.value);
-    filtar(e.target.value);
   };
 
-  const filtar = (terminoBusqueda) => {
-    let resultadoBusqueda = caratula.filter((elemento) => {
-      if (elemento.name.toLowerCase().includes(terminoBusqueda.toLowerCase())) {
-        return elemento;
-      }
+  const filteredProducts = caratulas
+
+  let searchMovie = [];
+
+  if (busqueda.length !== '') {
+    searchMovie = filteredProducts.filter((mov) => {
+      return mov.name.toLowerCase().includes(busqueda.toLowerCase());
     });
-    setCaratulas(resultadoBusqueda);
-  };
+  } else {
+    searchMovie = filteredProducts;
+  }
 
-  const mapCaratulas = caratula.map((noti, i) => (
+  const mapCaratulas = searchMovie.map((noti, i) => (
     <Caratula key={noti.id} caratula={noti} />
     
   ));

@@ -1,31 +1,45 @@
 import Caratula from "./Caratula";
 import { Button, Form, FormControl, Spinner } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Caratulas( {caratulas, loading} ) {
   
-  const [busqueda, setbusqueda] = useState("");
+  const [busqueda, setBusqueda] = useState("");
+  const [scrollMovie, setScrollMovie] = useState([]);
+  const [page, setPage] = useState(0);
+  const [pageQuantity, setPageQuantity] = useState(25);
+  const totalMovie = caratulas.length;
+  let completeArray = useRef([]);
 
-  const handleChange = (e) => {
-    setbusqueda(e.target.value);
-  };
 
-  const filteredProducts = caratulas
+  useEffect(() => {
+      setTimeout(() => {
+        const paginationResult = caratulas.slice(page*pageQuantity,page*pageQuantity+pageQuantity)
+        let auxArray = JSON.parse(JSON.stringify(scrollMovie))
+        paginationResult.forEach(element => {
+          auxArray.push(element);
+        });
+        completeArray.current = auxArray;
+        setScrollMovie(auxArray);
+      }, 100);
+  }, [page, caratulas,pageQuantity]);
 
-  let searchMovie = [];
-
-  if (busqueda.length !== '') {
-    searchMovie = filteredProducts.filter((mov) => {
+  useEffect(() => {
+    const auxArray = completeArray.current.filter((mov) => {
       return mov.name.toLowerCase().includes(busqueda.toLowerCase());
     });
-  } else {
-    searchMovie = filteredProducts;
-  }
+    setScrollMovie(auxArray);
+  },[busqueda])
 
-  const mapCaratulas = searchMovie.map((noti, i) => (
-    <Caratula key={noti.id} caratula={noti} />
-    
-  ));
+  useEffect(() => {
+    setBusqueda('');
+  },[page])
+
+
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+  };
 
   return (
     <div className="principal p-0">
@@ -70,9 +84,17 @@ export default function Caratulas( {caratulas, loading} ) {
               </svg>
             </Button>
           </Form>
+          <InfiniteScroll dataLength={scrollMovie.length} hasMore={true} next={() => {
+          const lastPage = totalMovie/pageQuantity;
+          const thisPage = page>=lastPage? 0 : page+1;
+          setPage(thisPage);
+        }}>
           <div className="d-flex flex-wrap justify-content-center">
-            {mapCaratulas}
+            {scrollMovie.map((movie) => {
+             return <Caratula key={movie.id} caratula={movie}/>
+            })}
           </div>
+          </InfiniteScroll>
         </>
       )}
     </div>

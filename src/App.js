@@ -8,6 +8,7 @@ import { Register } from "./pages/Register";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DetailsMovie from "./pages/DetailsMovie";
+import { TheNav } from "./Components/TheNav";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <TheNav />
       <Routes>
         <Route path="/" element={<Home />} />
 

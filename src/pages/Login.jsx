@@ -72,9 +72,6 @@ export const Login = () => {
 
   return (
     <div className="login-estilo">
-      <Link to="/">
-        <FontAwesomeIcon className="m-4 text-white" icon={faHouse} />
-      </Link>
       <div className="login">
         <Form className="login-form" onSubmit={handleSubmit}>
           <Form.Group className="mb-3 border-0" controlId="formBasicEmail">

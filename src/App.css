@@ -6,81 +6,29 @@ body {
 
 }
 .estilo-home{
-    width: 100%;
-    height: 100vh;
-    background-color: #132d47;
+    width: 100vw;
+    height: 90.5vh;
+    position: relative;
     display: flex;
-    justify-content: space-around;
+    box-shadow: 1px 1px 5px rgb(92, 92, 92);
+    align-items: center;
+    justify-content: center;
+    background-color: #132d47;
+
 }
 .estilo-home svg{
-    height: 2rem;
+    height: 15rem;
     color: white;
+    margin-left: 2rem;
 }
-.home-logo{
-    position: absolute;
-    top: 40%;
-
+.nav-estilo{
+    background-color: #132d47;
 }
-.home-logo a{
-    list-style: none;
+.nav-estilo p{
+    font-weight: 700;
 }
-.estilo-home img{
-    height: 3rem;
-    color: white;
-    align-self: center;
-    animation: log 3s infinite alternate;
-}
-@keyframes log {
-    0%{
-        opacity: 0;
-    }
-
-    100%{
-        opacity: 6;
-    }
-}
-
-.banner{
-    background-color: #edb709;
-    overflow: hidden;
-}
-.banner p{
-    margin: 0;
-    background-color: #edb709;
-    font-size: 11px;
-    position: relative;
-    padding-left: 110%;
-    overflow: hidden;
-    animation: mov 20s linear infinite;
-}
-@keyframes mov{
-    0%{
-        transform: translateX(25%);
-    }
-    100%{
-        transform: translateX(-110%);
-    }
-}
-.navLogo{
-    font-weight: bold;
-}
-.nav-options{
-    font-weight: bold;
-    font-size: 20px;
-}
-.bgNav , .bgNav1, .bgNav2, .bgLogo{
-    background-color: #14436f;
-}
-.navbar-toggler-icon{
-    background-color: #14436f;
-}
-.navbar-light .navbar-nav .nav-link{
-    color: white !important;
-
-    font-weight: 600;
-}
-.navbar-collapse{
-    height: auto;
+.nav-estilo svg{
+    color: #C48900;
 }
 .style-generos{
     background-color: #132d47;

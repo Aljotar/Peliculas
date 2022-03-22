@@ -2,12 +2,10 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Caratulas from "./Caratulas";
 import Footer from "./Footer";
-import { TheNav } from "./TheNav";
 
 export const SearchPage = ({ caratulas, loading }) => {
   return (
     <div>
-      <TheNav />
       <Row className="m-0">
         <Col sm={2}>
         </Col>

@@ -1,25 +1,12 @@
 import Caratula from "./Caratula";
 import { Button, Form, FormControl, Spinner } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 
-export default function Caratulas(props) {
-  const [caratulas, setCaratulas] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function Caratulas( {caratulas, loading} ) {
+  
 
-  useEffect(() => {
-    setLoading(true);
-    const request = async () => {
-      const response = await axios.get(
-        `http://api.tvmaze.com/search/shows?q=star%20wars`
-      );
-      const info = response.data;
-      setCaratulas(info);
-      setLoading(false);
-    };
-    request();
-  }, []);
-
+  const [caratula, setCaratulas] = useState(caratulas);
+  
   const [busqueda, setbusqueda] = useState("");
 
   const handleChange = (e) => {
@@ -27,18 +14,18 @@ export default function Caratulas(props) {
     filtar(e.target.value);
   };
 
-
   const filtar = (terminoBusqueda) => {
-    let resultadoBusqueda = caratulas.filter((elemento) => {
-      if (elemento.name.toString().includes(terminoBusqueda.toLowerCase())) {
+    let resultadoBusqueda = caratula.filter((elemento) => {
+      if (elemento.name.toLowerCase().includes(terminoBusqueda.toLowerCase())) {
         return elemento;
       }
     });
     setCaratulas(resultadoBusqueda);
   };
 
-  const mapCaratulas = caratulas.map((noti, i) => (
+  const mapCaratulas = caratula.map((noti, i) => (
     <Caratula key={noti.id} caratula={noti} />
+    
   ));
 
   return (

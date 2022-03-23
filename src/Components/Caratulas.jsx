@@ -2,28 +2,45 @@ import Caratula from "./Caratula";
 import { Button, Form, FormControl, Spinner } from "react-bootstrap";
 import React, { useEffect, useState, useRef } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import axios from "axios";
 
-export default function Caratulas( {caratulas, loading} ) {
+export default function Caratulas( { loading } ) {
   
   const [busqueda, setBusqueda] = useState("");
   const [scrollMovie, setScrollMovie] = useState([]);
   const [page, setPage] = useState(0);
   const [pageQuantity, setPageQuantity] = useState(25);
-  const totalMovie = caratulas.length;
+  const [totalMovie, setTotalMovie] = useState(0);
+  const [firstSearch, setFirstSearch] = useState(false);
   let completeArray = useRef([]);
 
 
   useEffect(() => {
-      setTimeout(() => {
-        const paginationResult = caratulas.slice(page*pageQuantity,page*pageQuantity+pageQuantity)
+      setTimeout( async () => {
+        let response = [];
+        if (firstSearch){
+          const aux = await axios.get(
+            `https://api.tvmaze.com/shows?`);
+            response = aux.data;
+        } else {
+          const aux = await axios.get(
+            `http://api.tvmaze.com/search/shows?q=star%20wars`
+          );
+          response = aux.data.map((movie) => {
+            return movie.show;
+          })
+        }
+        setTotalMovie(response.length)
+        const paginationResult = response.slice(page*pageQuantity,page*pageQuantity+pageQuantity)
         let auxArray = JSON.parse(JSON.stringify(scrollMovie))
         paginationResult.forEach(element => {
           auxArray.push(element);
         });
+        console.log(auxArray)
         completeArray.current = auxArray;
         setScrollMovie(auxArray);
       }, 100);
-  }, [page, caratulas,pageQuantity]);
+  }, [page,pageQuantity, firstSearch]);
 
   useEffect(() => {
     const auxArray = completeArray.current.filter((mov) => {
@@ -39,6 +56,7 @@ export default function Caratulas( {caratulas, loading} ) {
 
   const handleChange = (e) => {
     setBusqueda(e.target.value);
+    setFirstSearch(true);
   };
 
   return (

@@ -4,10 +4,10 @@ import "./caratula.css";
 
 export default function Caratula({ caratula }) {
   
-  const { name , image, id} = caratula;
+  const { name, id , image} = caratula;
 
   return (
-    <Link to={"/search-page/"+ id + name}>
+    <Link to={"/search-page/" + id}>
       <Card className="m-2 card-estilo" style={{ width: "15rem" }}>
         <Image
           className="p-0 card-imagen"

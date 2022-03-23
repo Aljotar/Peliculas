@@ -1,150 +1,37 @@
-import React, { useState } from "react";
-import swal from "sweetalert";
-import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import "./register.css";
+import React, { useState } from 'react'
+import { Container} from 'react-bootstrap'
+import { FormRegister } from '../Components/formRegister/FormRegister'
 
-export const Register = () => {
-  // Validaciones reactBoot
-  const [validated, setValidated] = useState(false);
+function Register() {
 
-  const [input, setInput] = useState({
-    name: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    const newInput = { ...input, [name]: value };
-    if (
-      newInput.name.length < 20 &&
-      newInput.lastName.length < 20 &&
-      newInput.email.length < 35 &&
-      newInput.password.length < 15
-    ) {
-      setInput(newInput);
-    } else {
-      swal("Alcanzaste el numero maximo de caracteres");
-    }
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:3000/auth/register", input);
-      swal({
-        title: "Excelente!",
-        text: "Te has registrado con exito!",
-        icon: "success",
-        button: "Continua",
-      });
-    } catch (error) {
-      console.error(error);
-      if (
-        input.name === "" &&
-        input.lastName === "" &&
-        input.email === "" &&
-        input.password === ""
-      ) {
-        swal("Faltan datos", "Completar los campos obligatorios", "warning");
-      } else if (input.name === "") {
-        swal("completa el nombre");
-      } else if (input.lastName === "") {
-        swal("completa el apellido");
-      } else if (input.email === "") {
-        swal("completa el email");
-      } else if (input.password === "") {
-        swal("completa la contraseña");
-      } else {
-        swal(JSON.stringify(error.response.data));
-      }
-    }
-    setValidated(true);
-    if (setValidated === true) {
-      e.target.reset();
-    }
-  };
-  return (
-    <div className="register-estilo">
-      <Form
-        noValidate
-        validated={validated}
-        className="form-register my-5"
-        onSubmit={handleSubmit}
-      >
-        <Form.Group
-          className="mb-3 row align-items-center justify-content-center"
-          controlId="formBasicName"
-        >
-          <label className="col-11 col-md-3 text-center">Nombre </label>
-          <Form.Control
-            className="col-11 col-md-9 form-input form-with-input"
-            name="name"
-            onChange={(e) => handleChange(e)}
-            type="text"
-            maxLength="20"
-            required
-          />
-        </Form.Group>
-        <Form.Group
-          className="mb-3 row align-items-center justify-content-center"
-          controlId="formBasicLastName"
-        >
-          <label className="col-11 col-md-3 align-items-center text-center">
-            Apellido
-          </label>
-          <Form.Control
-            className="col-11 col-md-9 form-input form-with-input"
-            name="lastName"
-            onChange={(e) => handleChange(e)}
-            type="text"
-            maxLength="20"
-            required
-          />
-        </Form.Group>
-        <Form.Group
-          className="mb-3 row align-items-center justify-content-center"
-          controlId="formBasicEmail"
-        >
-          <label className="col-11 col-md-3 align-items-center text-center">
-            Email
-          </label>
-          <Form.Control
-            className="col-11 col-md-9  form-input form-with-input"
-            name="email"
-            onChange={(e) => handleChange(e)}
-            type="email"
-            maxLength="35"
-            required
-          />
-        </Form.Group>
-        <Form.Group
-          className="mb-3 row align-items-center justify-content-center"
-          controlId="formBasicPasswprd"
-        >
-          <label className="col-11 col-md-3 text-center">Contraseña</label>
-          <Form.Control
-            className="col-11 col-md-9 form-input form-with-input"
-            name="password"
-            onChange={(e) => handleChange(e)}
-            type="password"
-            minLength="6"
-            maxLength="15"
-            required
-          />
-        </Form.Group>
-        <hr />
-        <div className="d-flex flex-column align-items-center align-items-md-start justify-content-center">
-          <button type="submit" className="btn-general-style">
-            Registrarme
-          </button>
-          <Link className="mt-2 text-decoration-none text-white" to="/login">
-            ¿Ya tiene una cuenta? Iniciar sesión
-          </Link>
+    const [verMas, setVerMas] = useState(false);
+    const extraContent = (
+        <>
+           
+           <h5 className="px-5 px-md-0 pe-md-5 ">REGÍSTRESE AHORA GRATIS y obtene descuentos en cada compra a través de nuestro Programa de Beneficios.</h5>
+        </>
+    );
+    const linkContent = verMas ? "<< Ver menos" : "Ver más >>";
+    const verMasClick = (e) => {
+        setVerMas(!verMas);
+    };
+    return (
+        <div className="container-register">
+        <Container >
+            <section className="row  row-cols-1 row-cols-lg-2">
+                <div className=" text-format d-flex flex-column aling-items-center align-items-md-start pb-0 ">
+                    <h1>Bienvenido/a</h1>
+                    <p className="px-5 px-md-0 pe-md-5">Únete gratis y sé el primero en enterarte de nuestras mejores ofertas y nuevos lanzamientos.</p>
+                    {verMas && extraContent}
+                    <p onClick={verMasClick} className="ver-mas">{linkContent}</p>
+                </div>
+                <Container>
+                  <FormRegister />
+                </Container>
+            </section>
+        </Container>
         </div>
-      </Form>
-    </div>
-  );
-};
+    )
+}
+
+export default Register

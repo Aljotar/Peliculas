@@ -114,3 +114,11 @@ body {
 .card-details p{
     font-weight: 600;
 }
+
+@media screen and (min-width: 576px) {
+
+    .search-movie{
+        width: 10%;
+    }
+    
+}

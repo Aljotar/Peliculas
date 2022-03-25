@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { Card, Image, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
+
 export default function DetailsMovie({ caratulas }) {
   let { movieId } = useParams();
-
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -13,7 +13,7 @@ export default function DetailsMovie({ caratulas }) {
     async function getMovie(movieId) {
       setLoading(true);
       const response = await axios.get(
-        `https://api.tvmaze.com/shows/${movieId}`
+        `http://api.tvmaze.com/shows/${movieId}`
       );
       setMovie(response.data);
       setLoading(false);

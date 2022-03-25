@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import './navbarMain.css'
 
 import { leerDeLocalStorage } from '../../utils/localStorage';
 import { NavbarAdmin } from '../navbarAdmin/NavbarAdmin';
@@ -9,6 +8,7 @@ import { NavTop } from './NavTop';
 
 
 export const NavbarMain = ({ user }) => {
+
     const tokenLocal = leerDeLocalStorage('token') || {};
 
     const location = useLocation();
@@ -21,8 +21,6 @@ export const NavbarMain = ({ user }) => {
 
     const logout = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('favorites');
-        localStorage.removeItem('cart');
         window.location.href = '/';
     }
 
@@ -55,4 +53,3 @@ export const NavbarMain = ({ user }) => {
 
     )
 }
-

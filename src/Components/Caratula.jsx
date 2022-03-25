@@ -1,14 +1,19 @@
 import { Card, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import "./caratula.css";
 
 export default function Caratula({ caratula }) {
   
   const { name, id , image} = caratula;
+  const history = useHistory()
+  function redirect(){
+      history.push(`/search-page/${id}`);
+  }
 
   return (
-    <Link to={"/search-page/" + id}>
-      <Card className="m-2 card-estilo" style={{ width: "15rem" }}>
+ <>
+      <Card onClick={() => redirect()} className="m-2 card-estilo" style={{ width: "15rem" }}>
         <Image
           className="p-0 card-imagen"
           variant=""
@@ -18,6 +23,7 @@ export default function Caratula({ caratula }) {
           {name}
         </h3>
       </Card>
-    </Link>
+      </>
+
   );
 }

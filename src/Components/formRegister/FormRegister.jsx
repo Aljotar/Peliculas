@@ -3,15 +3,15 @@ import swal from 'sweetalert'
 import { Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 export const FormRegister = () => {
-    const navigate = useNavigate();
+    const navigate = useHistory();
     // Validaciones reactBoot
     const [validated, setValidated] = useState(false);
 
-    const [input, setInput] = useState({ name: '', lastName: '', email: '', password: '', birthday: '' });
+    const [input, setInput] = useState({ name: '', lastName: '', email: '', password: '' });
 
 
     const handleChange = (e) => {
@@ -29,14 +29,14 @@ export const FormRegister = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://hulkstore-server.herokuapp.com/api/auth/register', input);
+            await axios.post('http://localhost:4000/auth/register', input);
             swal({
                 title: "Excelente!",
                 text: "Te has registrado con exito!",
                 icon: "success",
                 button: "Continua"
             });
-            navigate('/login');
+            navigate.push('/login');
         } catch (error) {
             console.error(error);
             if (input.name === '' && input.lastName === '' && input.email === '' && input.password === '') {
@@ -53,9 +53,6 @@ export const FormRegister = () => {
             }
             else if (input.password === '') {
                 swal('completa la contraseña')
-            }
-            else if (input.birthday === '') {
-                swal('completa el nacimiento')
             }
             else {
                 swal(JSON.stringify(error.response.data));
@@ -113,16 +110,6 @@ export const FormRegister = () => {
                     type="password"
                     minLength="6"
                     maxLength="15"
-                    required
-                />
-            </Form.Group>
-            <Form.Group className="mb-3 row align-items-center justify-content-center" controlId="formBasicDate">
-                <label className="col-11 col-md-3 text-center">Nacimiento</label>
-                <Form.Control
-                    className="col-11 col-md-9 text-center form-input form-with-input"
-                    type="date"
-                    name="birthday"
-                    onChange={(e) => handleChange(e)}
                     required
                 />
             </Form.Group>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { Nav, Offcanvas } from 'react-bootstrap';
-import './navbarMain.css'
 
 
 //React Icons
@@ -17,8 +16,6 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
 
     const logout = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('favorites');
-        localStorage.removeItem('cart');
         window.location.href = '/';
     }
 
@@ -27,7 +24,7 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
             <Offcanvas.Header className="responsive-navbar-header">
                 <div className="logo-container" >
                     <NavLink as={NavLink} to="/" onClick={handleClose}>
-                        <img src="https://www.lacasadeel.net/wp-content/uploads/2016/01/Marvel-y-DC2.jpg" alt="img logo" className="nav-logo-desktop" />
+                        <img src="" alt="img logo" className="nav-logo-desktop" />
                     </NavLink>
                 </div>
                 <button type="button" aria-label="Close" className="navbar-button mx-1" onClick={handleClose} ><VscClose /></button>
@@ -43,9 +40,9 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
                     </a>
                 </Offcanvas.Header>
             }
-            {user.role === 'user' &&
+            {user?.role !== 'admin' &&
                 <Offcanvas.Header className="d-flex flex-column bienvenido-user">
-                    <p>Bienvenido Sr/a {user.name}</p>
+                    <p>Bienvenido Sr/a {user?.name}</p>
                     <div>
                         <NavLink as={NavLink} to="/myProfile" onClick={handleClose}>
                             <button className="btn-general-style px-4" >Mi Perfil</button>
@@ -55,10 +52,10 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
                 </Offcanvas.Header>
             }
             {/* si esta registrado un usuario admin entonces se muestra */}
-            {user.role === 'admin'
+            {user?.role === 'admin'
                 &&
                 <Offcanvas.Header className="d-flex flex-column bienvenido-user">
-                    <p>Bienvenido Sr/a {user.name}</p>
+                    <p>Bienvenido Sr/a {user?.name}</p>
                     <div className="d-flex justify-content-evenly">
                         <NavLink  as={NavLink} to="/myProfile" onClick={handleClose} >
                             <button className="btn-general-style px-4">Mi Perfil</button>
@@ -72,7 +69,10 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
                     <li className="p-2 mx-3" >
                         <Nav.Link as={NavLink} to="/store"  exact activeClassName="link-active" onClick={handleClose}>NUESTROS ARTICULOS</Nav.Link>
                     </li>
-                    {user.role === 'admin' &&
+                    <li className="p-2 mx-3">
+                        <Nav.Link as={NavLink} to="/contact" activeClassName="link-active" onClick={handleClose}>CONTACTO</Nav.Link>
+                    </li>
+                    {user?.role === 'admin' &&      
                     <li className="p-2 mx-3">
                         <Nav.Link as={NavLink} to="/adminBoard" activeClassName="link-active"><FaWrench className="mb-1 me-2" />ADMIN BOARD</Nav.Link>
                     </li>

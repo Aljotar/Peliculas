@@ -9,11 +9,6 @@ export const ModalEditUser = ({ showModalEditar, closeModal, userFind, getUsers}
 
     const [input, setInput] = useState({ role: userFind.role });
 
-    const birthdayUser = new Date(userFind.birthday);
-    const day = birthdayUser.getUTCDate();
-    const month = birthdayUser.getUTCMonth();
-    const year = birthdayUser.getUTCFullYear();
-
     const handleChange = (e) => {
         const { value, name } = e.target;
         const newInput = { ...input, [name]: value };
@@ -49,7 +44,6 @@ export const ModalEditUser = ({ showModalEditar, closeModal, userFind, getUsers}
                             <p>
                                 {userFind.role === 'admin' ? "Administrador " : "Cliente "}
                                 {moment(userFind.register).fromNow()}</p>
-                            <p>Cumpleaños: {day}/{month + 1}/{year}</p>
                             <label className="col-11 col-md-3 align-items-center label-role">Role:</label>
                             <select name="role" onChange={(e) => handleChange(e)} className="col-11 col-md-9 form-input-editUser" required>
                                 <option value="" disabled selected >Elje un rol</option>

@@ -2,14 +2,22 @@ import "./formLogin.css";
 import { Card, Form } from "react-bootstrap";
 import axios from "axios";
 import swal from "sweetalert";
-import { FaFacebookSquare } from "react-icons/fa";
 import { useState } from "react";
 import { guardarEnLocalStorage } from "../../utils/localStorage";
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-export const FormLogin = ({ requestUserData, cart }) => {
+// login google
+import React from "react";
+import ReactDOM from "react-dom";
+import GoogleLogin from "react-google-login";
 
-  const navigate = useNavigate();
+export const FormLogin = ({ requestUserData }) => {
+  
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
+
+  const navigate = useHistory();
   // Validaciones reactBoot
   const [validated, setValidated] = useState(false);
 
@@ -31,40 +39,39 @@ export const FormLogin = ({ requestUserData, cart }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    event.stopPropagation();
+    //event.stopPropagation();
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        "http://localhost:4000/auth/login",
         input
       );
-      const { token, name } = response.data;
+      const user = response.data;
+      const token = user.token;
       guardarEnLocalStorage({ key: "token", value: { token } });
-      if (cart.length !== 0) {
-        swal("Genial " + name + " estas listo ");
-      } else {
-        swal("Bienvenido/a " + name);
-      }
+      guardarEnLocalStorage({ key: "user", value: { user } });
+      swal("Bienvenido/a " + user.name);
+
       await requestUserData();
       //El push redirecciona a la pantalla indicada en el parametro.
-      navigate('/')
+      navigate.push("/");
       scrollToTop();
     } catch (error) {
       console.error(error);
-        swal({
-          title: "Datos Incorrectos / Usuario No Registrado",
-          text: "Aun no tienes cuenta? Registrate ya mismo!",
-          icon: "error",
-          buttons: ["No, Gracias", "Registrate!"],
-          dangerMode: true,
-        }).then((willDelete) => {
-          if (willDelete) {
-            navigate('/register');
-          } else {
-            swal("Sera en otra Ocacion!");
-          }
-        });
-      }
+      swal({
+        title: "Datos Incorrectos / Usuario No Registrado",
+        text: "Aun no tienes cuenta? Registrate ya mismo!",
+        icon: "error",
+        buttons: ["No, Gracias", "Registrate!"],
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          navigate.push("/register");
+        } else {
+          swal("Sera en otra Ocacion!");
+        }
+      });
+    }
     setValidated(true);
     if (setValidated === true) {
       event.target.reset();
@@ -110,20 +117,16 @@ export const FormLogin = ({ requestUserData, cart }) => {
             Iniciar sesión
           </button>
         </Form>
-        <div className="d-flex flex-column">
-          <button
-            onClick={errorLink}
-            type="submit"
-            className="responsive-login-face"
-          >
-            {" "}
-            <FaFacebookSquare className="mb-1" /> Iniciar sesión con facebook
-          </button>
+            <GoogleLogin className="w-100 d-flex justify-content-center"
+              clientId="340029822027-bf53tdkbv4uiabpo2hj6m7fa4pbh1n08.apps.googleusercontent.com"
+              buttonText="Continuar con Google"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}/>
           <div className="d-flex flex-column align-items-center justify-content-center crea-cuenta mt-2">
             <p className="mb-1">¿Aun no eres miembro?</p>
             <a href="/register">Crea una cuenta</a>
           </div>
-        </div>
       </Card.Body>
     </Card>
   );

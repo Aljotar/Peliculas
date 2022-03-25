@@ -80,7 +80,7 @@ export default function Caratulas( { loading } ) {
             </svg>
             Peliculas
           </h2>{" "}
-          <Form className="d-flex">
+          <Form className="d-flex w-25">
             <FormControl
               type="search"
               placeholder="Buscar Películas y series.."

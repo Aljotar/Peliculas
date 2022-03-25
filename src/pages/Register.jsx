@@ -19,12 +19,6 @@ function Register() {
         <div className="container-register">
         <Container >
             <section className="row  row-cols-1 row-cols-lg-2">
-                <div className=" text-format d-flex flex-column aling-items-center align-items-md-start pb-0 ">
-                    <h1>Bienvenido/a</h1>
-                    <p className="px-5 px-md-0 pe-md-5">Únete gratis y sé el primero en enterarte de nuestras mejores ofertas y nuevos lanzamientos.</p>
-                    {verMas && extraContent}
-                    <p onClick={verMasClick} className="ver-mas">{linkContent}</p>
-                </div>
                 <Container>
                   <FormRegister />
                 </Container>

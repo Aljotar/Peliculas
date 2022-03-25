@@ -10,7 +10,7 @@ import { Card, ListGroup, OverlayTrigger, Popover, Tooltip } from "react-bootstr
 import { ModalEditPassword } from "./ModalEditPassword";
 import { SpinnerRW } from "../spinner/SpinnerRW";
 import { FiSettings } from "react-icons/fi";
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 moment.locale("es");
 
@@ -19,7 +19,7 @@ const exampleImage =
 
 export const MyProfileView = ({ user, requestUserData }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useHistory();
 
   const [showModalPassword, setShowModalPassword] = useState(false);
 
@@ -53,15 +53,10 @@ export const MyProfileView = ({ user, requestUserData }) => {
     await axios.delete(`https://hulkstore-server.herokuapp.com/api/usuarios/${user._id}`, {
       headers,
     });
-    navigate("/");
+    navigate.push("/");
     setIsLoading(false);
     window.location.reload();
   };
-
-  const birthdayUser = new Date(user.birthday);
-  const day = birthdayUser.getUTCDate();
-  const month = birthdayUser.getUTCMonth();
-  const year = birthdayUser.getUTCFullYear();
 
   return (
     <>
@@ -78,9 +73,6 @@ export const MyProfileView = ({ user, requestUserData }) => {
             </Card.Title>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                Cumpleaños: {day}/{month + 1}/{year}
-              </ListGroup.Item>
-              <ListGroup.Item>
                 {user.role === "admin" ? "Administrador " : "Cliente "}
                 {moment(user.register).fromNow()}
               </ListGroup.Item>
@@ -88,18 +80,6 @@ export const MyProfileView = ({ user, requestUserData }) => {
             </ListGroup>
           </Card.Body>
           <div className="my-2 d-flex justify-content-between">
-
-            <OverlayTrigger
-              placement="bottom"
-              delay={{ show: 250, hide: 400 }}
-              overlay={
-                (props) => (
-                  <Tooltip id="button-tooltip" {...props}>
-                    Editar foto de perfil
-                  </Tooltip>)
-              }
-            >
-            </OverlayTrigger>
             <button
               className="btn-admin "
             >

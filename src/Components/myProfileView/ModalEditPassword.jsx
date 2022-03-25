@@ -2,16 +2,10 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { AiOutlineCheck } from 'react-icons/ai';
-import swal from 'sweetalert';
 
 
 export const ModalEditPassword = ({ showModalPassword, closeModal, user, requestUserData }) => {
     const [input, setInput] = useState({ name: user.password });
-
-
-    const errorLink = () => {
-        swal("Oops!", "Todavia estamos trabajando en esta funcionalidad :(", "error");
-    }
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -30,9 +24,6 @@ export const ModalEditPassword = ({ showModalPassword, closeModal, user, request
         }
     }
 
-    const handleSumitVerify = async (e) => {
-        errorLink();
-    }
 
     return (
 
@@ -47,7 +38,7 @@ export const ModalEditPassword = ({ showModalPassword, closeModal, user, request
             >
                 <Form className="form-register my-5 px-3" onSubmit={handleSubmit}>
                     <Form.Group
-                        onSubmit={handleSumitVerify} >
+                 >
                         <Form.Group className="mb-3 row align-items-center justify-content-center">
                             <label className="text-center mb-1">Contraseña Actual</label>
                             <input
@@ -59,7 +50,7 @@ export const ModalEditPassword = ({ showModalPassword, closeModal, user, request
                                 onChange={(e) => handleChange(e)}
                             />
                             <Form.Control.Feedback>Cambia tu contraseña !</Form.Control.Feedback>
-                            <Button variant="outline-success" className="col-2 p-1 ms-1" onClick={errorLink}><AiOutlineCheck /></Button>
+                            <Button variant="outline-success" className="col-2 p-1 ms-1" ><AiOutlineCheck /></Button>
                         </Form.Group>
                     </Form.Group>
                     <Form.Group className="mb-3 row align-items-center justify-content-center">
@@ -76,7 +67,7 @@ export const ModalEditPassword = ({ showModalPassword, closeModal, user, request
                 </Form>
             </Modal.Body>
             <Modal.Footer className="d-flex justify-content-between aling-items-center">
-                <button className="m-auto btn-admin "  onClick={errorLink}>
+                <button className="m-auto btn-admin ">
                     <h5 className="text-center m-0 py-2  ">Cambiar Contraseña</h5>
                 </button>
             </Modal.Footer>

@@ -2,6 +2,7 @@ import { Container, Image, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faHouse } from "@fortawesome/free-solid-svg-icons";
+import { NavbarAdmin } from "./navbarAdmin/NavbarAdmin";
 
 export const TheNav = () => {
   return (
@@ -25,6 +26,7 @@ export const TheNav = () => {
             </Link>
           </div>
         </Container>
+        <NavbarAdmin />
       </Navbar>
     </div>
   );

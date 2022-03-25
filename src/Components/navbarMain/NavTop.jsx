@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { VscMenu } from 'react-icons/vsc'
-import './navbarMain.css'
 import { NavUser } from './NavUser'
 
-export const NavTop = ({ handleShow, tokenLocal, splitLocation, user, logout, favorites, cart }) => {
+export const NavTop = ({ handleShow, tokenLocal, splitLocation, user, logout }) => {
 
     const [isVisible, setIsVisible] = useState('');
     let prevScrollpos = window.pageYOffset;
@@ -38,7 +37,7 @@ export const NavTop = ({ handleShow, tokenLocal, splitLocation, user, logout, fa
                     </div>
                     <div className="logo-container" >
                         <a href="/"  >
-                            <img src="https://www.lacasadeel.net/wp-content/uploads/2016/01/Marvel-y-DC2.jpg" alt="img logo" className="nav-logo-desktop" />
+                            <img src="" alt="img logo" className="nav-logo-desktop" />
                         </a>
                     </div>
                     <NavUser
@@ -46,8 +45,7 @@ export const NavTop = ({ handleShow, tokenLocal, splitLocation, user, logout, fa
                         splitLocation={splitLocation}
                         user={user}
                         logout={logout}
-                        favorites={favorites}
-                        cart={cart}
+
                     />
 
                 </div>

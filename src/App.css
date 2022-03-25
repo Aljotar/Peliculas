@@ -3,7 +3,14 @@
 body {
     display: flex;
     flex-direction: column;
+    font-family:'Nunito', sans-serif;
 
+}
+.nav-estilo{
+    background-color: #132d47;
+}
+.nav-estilo svg{
+    color: rgb(190, 140, 105);
 }
 .estilo-home{
     width: 100vw;
@@ -21,22 +28,7 @@ body {
     color: white;
     margin-left: 2rem;
 }
-.nav-estilo{
-    background-color: #132d47;
-}
-.nav-estilo p{
-    font-weight: 700;
-}
-.nav-estilo svg{
-    color: #C48900;
-}
-.style-generos{
-    background-color: #132d47;
-}
-.titulo-generos{
-    font-size: 15px;
-    margin: 15px;
-}
+
 .list-group-item{
     background-color: #132d47!important;
     font-size: 13px;
@@ -80,11 +72,4 @@ body {
 .tituloCol1{
     font-weight: bold;
     font-size: 20px;
-}
-.footer{
-    height: 18vh;
-    margin-top: auto;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 1px 1px 50px rgb(102, 102, 102);
-
 }

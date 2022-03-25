@@ -20,7 +20,6 @@ export const NavbarAdmin = ({ user }) => {
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('favorites');
-        localStorage.removeItem('cart');
         window.location.href = '/';
     }
 
@@ -36,15 +35,12 @@ export const NavbarAdmin = ({ user }) => {
                                 <VscMenu />
                             </button>
                         </div>
-                        <div className="logo-container" >
-                            <img src="https://www.lacasadeel.net/wp-content/uploads/2016/01/Marvel-y-DC2.jpg" alt="img logo" className="nav-logo-desktop" />
-                        </div>
                         {/* condicionales del LOGIN */}
                         <div className="d-flex align-items-center login-register">
                             <NavDropdown
                                 className="d-flex align-items-center justify-content-center navbar-user mx-2 d-none d-md-block p-0"
                                 id="nav-dropdown-ligth-example"
-                                title={<span>Hola {user.name} </span>}
+                                title={<span>Hola {user?.name} </span>}
                                 menuVariant="light"
                             >
                                 <NavDropdown.Item className="text-center" as={NavLink} to="/profileAdmin">

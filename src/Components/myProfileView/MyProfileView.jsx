@@ -6,7 +6,7 @@ import moment from "moment";
 import "moment/locale/es";
 import "./myProfileView.css";
 import { leerDeLocalStorage } from "../../utils/localStorage";
-import { Card, ListGroup, OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
+import { Card, ListGroup, OverlayTrigger, Popover } from "react-bootstrap";
 import { ModalEditPassword } from "./ModalEditPassword";
 import { SpinnerRW } from "../spinner/SpinnerRW";
 import { FiSettings } from "react-icons/fi";
@@ -30,7 +30,6 @@ export const MyProfileView = ({ user, requestUserData }) => {
   const alertaBorrar = (_id) => {
     swal({
       title: "¿ Esta seguro ?",
-      text: "Al eliminar su cuenta perdera el historial de compras y favoritos",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -50,7 +49,7 @@ export const MyProfileView = ({ user, requestUserData }) => {
     const tokenLocal = leerDeLocalStorage("token") || {};
     const headers = { "x-auth-token": tokenLocal.token };
     localStorage.removeItem("token");
-    await axios.delete(`https://hulkstore-server.herokuapp.com/api/usuarios/${user._id}`, {
+    await axios.delete(`https://app-movie-pop.herokuapp.com/usuarios/${user._id}`, {
       headers,
     });
     navigate.push("/");

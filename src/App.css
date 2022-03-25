@@ -6,16 +6,47 @@ body {
     font-family:'Nunito', sans-serif;
 
 }
-.nav-estilo{
-    background-color: #132d47;
-}
 .nav-estilo svg{
     color: rgb(190, 140, 105);
 }
-.estilo-home{
-    width: 100vw;
-    height: 90.5vh;
+
+.navbar-button{
+    background-color: #132d47;
+    border: none;
+    color: white;
+    width: 4rem;
+    margin-top: 45px;
+}
+.responsive-navbar, .navbar{
+    background-color: #132d47;
+}
+.login-register{
+    background-color: #132d47;
+    margin-top: 5x;
+    display: flex;
+}
+.login-register a{
+    font-family: 'Nunito';
+    font-weight: 600;
+}
+.svg-nav{
     position: relative;
+
+}
+.container-register{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #132d47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Nunito';
+}
+.estilo-home{
+    width: 100%;
+    height: 95vh;
     display: flex;
     box-shadow: 1px 1px 5px rgb(92, 92, 92);
     align-items: center;
@@ -72,4 +103,14 @@ body {
 .tituloCol1{
     font-weight: bold;
     font-size: 20px;
+}
+.card-details{
+    border-style: none!important;
+    box-shadow: 1px 1px 5px rgb(17, 17, 17);
+    height: 100vh;
+    font-family: 'Nunito'
+    ;
+}
+.card-details p{
+    font-weight: 600;
 }

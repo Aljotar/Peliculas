@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Nav } from 'react-bootstrap'
 import { VscMenu } from 'react-icons/vsc'
 import { NavUser } from './NavUser'
 
@@ -25,8 +25,8 @@ export const NavTop = ({ handleShow, tokenLocal, splitLocation, user, logout }) 
 
 
     return (        
-        <nav className={`navbar bg-blue d-flex fix-to-top-mobile ${isVisible}`} expand="lg" >
-            <Container className="py-3 ">
+        <Nav className={`navbar d-flex fix-to-top-mobile ${isVisible}`} expand="lg" >
+       
                 <div className="d-flex align-items-center contenedor">
                     <div className="d-block d-md-none ">
                         <button
@@ -34,11 +34,6 @@ export const NavTop = ({ handleShow, tokenLocal, splitLocation, user, logout }) 
                             onClick={handleShow}>
                             <VscMenu />
                         </button>
-                    </div>
-                    <div className="logo-container" >
-                        <a href="/"  >
-                            <img src="" alt="img logo" className="nav-logo-desktop" />
-                        </a>
                     </div>
                     <NavUser
                         tokenLocal={tokenLocal}
@@ -49,7 +44,6 @@ export const NavTop = ({ handleShow, tokenLocal, splitLocation, user, logout }) 
                     />
 
                 </div>
-            </Container>
-        </nav>
+        </Nav>
     )
 }

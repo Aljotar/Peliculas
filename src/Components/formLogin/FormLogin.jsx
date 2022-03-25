@@ -43,7 +43,7 @@ export const FormLogin = ({ requestUserData }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/auth/login",
+        "https://app-movie-pop.herokuapp.com/auth/login",
         input
       );
       const user = response.data;
@@ -76,10 +76,6 @@ export const FormLogin = ({ requestUserData }) => {
     if (setValidated === true) {
       event.target.reset();
     }
-  };
-
-  const errorLink = () => {
-    swal("Oops!", "Todavia no trabajamos en esto :(", "error");
   };
 
   return (

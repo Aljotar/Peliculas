@@ -35,7 +35,7 @@ function App() {
     try {
       if (tokenLocal.token) {
         const headers = { "x-auth-token": tokenLocal.token };
-        const response = await axios.get("http://localhost:4000/auth", {
+        const response = await axios.get("https://app-movie-pop.herokuapp.com/auth", {
           headers,
         });
         setUser(response.data || {});
@@ -58,7 +58,7 @@ function App() {
   const getUsers = async () => {
     try {
       const response = await axios.get(
-        "https://hulkstore-server.herokuapp.com/api/usuarios"
+        "https://app-movie-pop.herokuapp.com/usuarios"
       );
       setUsuarios(response.data);
       setTableUsers(response.data);
@@ -88,8 +88,6 @@ function App() {
         <Route path="/search-page">
           <SearchPage loading={loading} />
         </Route>
-
-        <Route path="/favorite" />
 
         <Route path="/login">
           <Login requestUserData={requestUserData} />

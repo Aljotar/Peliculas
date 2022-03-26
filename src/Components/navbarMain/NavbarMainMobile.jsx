@@ -45,7 +45,7 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
                 </Modal.Header>
             }
             {/* si esta registrado un usuario admin entonces se muestra */}
-            {user.role === 'admin'
+            {user.role === 'user'
                 &&
                 <Modal.Header className="d-flex flex-column bienvenido-user text-white">
                     <p>Bienvenido Sr/a {user.name}</p>

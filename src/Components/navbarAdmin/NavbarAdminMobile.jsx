@@ -28,11 +28,16 @@ const NavbarAdminMobile = (props) => {
                     <NavLink as={NavLink} to="/profileAdmin">
                         <button className="btn-general-style px-4">Mi Perfil</button>
                     </NavLink>
-                    <button onClick={logout} className="btn-general-style p-1">Cerrar Sesion</button>
+                    <button onClick={logout} className="btn-general-style">Cerrar Sesion</button>
                 </div>
             </Modal.Header>
             <Modal.Body >
                 <div className="responsive-navbar-links text-center ">
+                <li className="p-2 mx-3">
+                        <Nav.Link as={NavLink} to="/userList" activeClassName="link-active" onClick={handleClose}>
+                            USUARIOS
+                        </Nav.Link>
+                    </li>
                     <li className="p-2 mx-3">
                         <Nav.Link as={NavLink} to="/" activeClassName="link-active"><RiArrowGoBackLine className="mb-1" onClick={handleClose} />
                             VOLVER A LANDING

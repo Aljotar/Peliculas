@@ -12,6 +12,16 @@ body {
   width: 4rem;
   margin: 20px 20px 0px 0px;
 }
+.responsive-navbar-links{
+    list-style: none;
+    font-weight: 600;
+}
+.modal .btn-general-style{
+    background-color: #132d47;
+    color: white;
+    border: none;
+    box-shadow: 1px 1px 5px rgb(97, 97, 97);
+}
 .responsive-navbar,
 .navbar {
   background-color: #132d47;
@@ -30,6 +40,9 @@ body {
 }
 .svg-nav {
   position: relative;
+}
+.bienvenido-user{
+    color: #0b151b;
 }
 .search-movie .form-control{
    background-color: #132d47;

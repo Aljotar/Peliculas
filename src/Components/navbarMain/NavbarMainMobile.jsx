@@ -35,7 +35,7 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
             }
             {user.role === 'admin' &&
                 <Modal.Header className="d-flex flex-column bienvenido-user">
-                    <p>Bienvenido Sr/a {user.name}</p>
+                    <p className='text-black'>Bienvenido Sr/a {user.name}</p>
                     <div>
                         <NavLink as={NavLink} to="/myProfile" onClick={handleClose}>
                             <button className="btn-general-style px-4" >Mi Perfil</button>
@@ -47,13 +47,13 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
             {/* si esta registrado un usuario admin entonces se muestra */}
             {user.role === 'user'
                 &&
-                <Modal.Header className="d-flex flex-column bienvenido-user text-white">
+                <Modal.Header className="d-flex flex-column bienvenido-user">
                     <p>Bienvenido Sr/a {user.name}</p>
                     <div className="d-flex justify-content-evenly">
                         <NavLink  as={NavLink} to="/myProfile" onClick={handleClose} >
                             <button className="btn-general-style px-4">Mi Perfil</button>
                         </NavLink>
-                        <button onClick={logout} className="btn-general-style p-1">Cerrar Sesion</button>
+                        <button onClick={logout} className="btn-general-style">Cerrar sesion</button>
                     </div>
                 </Modal.Header>
             }
@@ -61,7 +61,7 @@ const NavbarMainMobile = ({ user, setShow, show }) => {
                 <div className="responsive-navbar-links text-center text-white">
                     {user.role === 'admin' &&      
                     <li className="p-2 mx-3">
-                        <Nav.Link as={NavLink} to="/adminBoard" activeClassName="link-active"><FaWrench className="mb-1 me-2" />ADMIN BOARD</Nav.Link>
+                        <Nav.Link as={NavLink} to="/userList" activeClassName="link-active"><FaWrench className="mb-1 me-2" />ADMIN BOARD</Nav.Link>
                     </li>
                     }
                 </div>

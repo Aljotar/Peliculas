@@ -58,7 +58,7 @@ export const NavbarAdmin = ({ user }) => {
                     </div>
                 </Container>
                 <Container className="pb-2 d-none d-md-block">
-                    <div className="d-flex align-items-center justify-content-center w-100 navbar-links">
+                    <div className="d-flex align-items-center justify-content-center w-100 navbar-links text-black">
                         <li className="p-2 mx-3">
                             <Nav.Link as={NavLink} to="/userList" activeClassName="link-active" >USUARIOS</Nav.Link>
                         </li>

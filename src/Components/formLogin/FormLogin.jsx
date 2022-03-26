@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 
 // login google
 import React from "react";
-import ReactDOM from "react-dom";
 import GoogleLogin from "react-google-login";
 
 export const FormLogin = ({ requestUserData }) => {

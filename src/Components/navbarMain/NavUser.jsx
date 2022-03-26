@@ -67,7 +67,7 @@ export const NavUser = ({ tokenLocal, splitLocation, user, logout }) => {
           )}
         </NavDropdown>
       )}
-      {user.role === "user" && (
+      {!userEmpty && user.role === "user" && (
         <NavDropdown
           className="d-flex align-items-center navbar-user mx-2 d-none d-md-block"
           id="nav-dropdown-light-example"

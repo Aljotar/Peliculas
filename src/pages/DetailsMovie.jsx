@@ -12,7 +12,7 @@ export default function DetailsMovie({ caratulas }) {
     async function getMovie(movieId) {
       setLoading(true);
       const response = await axios.get(
-        `http://api.tvmaze.com/shows/${movieId}`
+        `https://api.tvmaze.com/shows/${movieId}`
       );
       setMovie(response.data);
       setLoading(false);

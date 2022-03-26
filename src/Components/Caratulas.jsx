@@ -24,7 +24,7 @@ export default function Caratulas( { loading } ) {
             response = aux.data;
         } else {
           const aux = await axios.get(
-            `http://api.tvmaze.com/search/shows?q=star%20wars`
+            `https://api.tvmaze.com/search/shows?q=star%20wars`
           );
           response = aux.data.map((movie) => {
             return movie.show;

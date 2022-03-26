@@ -14,7 +14,7 @@ export const NavUser = ({ tokenLocal, splitLocation, user, logout }) => {
   return (
     <div className="login-register">
       {!tokenLocal.token && (
-        <span className="d-flex mx-2 mt-5 d-none d-md-block text-white">
+        <span className="d-flex mx-2 mt-3 d-none d-md-block text-white">
           <a
             href="/login"
             className={
@@ -40,7 +40,7 @@ export const NavUser = ({ tokenLocal, splitLocation, user, logout }) => {
       )}
       {user.role === "admin" && (
         <NavDropdown
-          className="d-flex align-items-center justify-content-center navbar-user mx-2 d-none d-md-block "
+          className="d-flex align-items-center justify-content-end navbar-user mx-2 d-none d-md-block "
           id="nav-dropdown-ligth-example"
           title={<span className="text-black">Hola {user.name} </span>}
           menuVariant="ligth"
@@ -95,7 +95,7 @@ export const NavUser = ({ tokenLocal, splitLocation, user, logout }) => {
           width="26.995"
           height="27"
           viewBox="0 0 26.995 27"
-          className="mx-5 mt-5"
+          className="mx-5 mt-3 svg-nav"
         >
           <path
             id="search-solid"
@@ -110,7 +110,7 @@ export const NavUser = ({ tokenLocal, splitLocation, user, logout }) => {
           width="33.435"
           height="26"
           viewBox="0 0 33.435 26"
-          className="mx-5 mt-5"
+          className="mx-5 mt-3 svg-nav1"
         >
           <path
             id="home-solid"

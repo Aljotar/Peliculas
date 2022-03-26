@@ -25,7 +25,7 @@ export const NavTop = ({ handleShow, tokenLocal, splitLocation, user, logout }) 
 
 
     return (        
-        <Nav className={`navbar d-flex fix-to-top-mobile ${isVisible}`} expand="lg" >
+        <Nav className={`navbar d-flex justify-content-end ${isVisible}`} expand="lg" >
        
                 <div className="d-flex align-items-center contenedor">
                     <div className="d-block d-md-none ">

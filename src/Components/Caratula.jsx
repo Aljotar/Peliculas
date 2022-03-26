@@ -13,7 +13,7 @@ export default function Caratula({ caratula }) {
 
   return (
  <>
-      <Card onClick={() => redirect()} className="m-2 card-estilo" style={{ width: "15rem" }}>
+      <Card onClick={() => redirect()} className="m-2 card-estilo" style={{ width: "10rem" }}>
         <Image
           className="p-0 card-imagen"
           variant=""

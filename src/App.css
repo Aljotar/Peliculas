@@ -136,7 +136,20 @@ body {
 }
 
 @media screen and (min-width: 880px) {
-  .principal {
-    height: 100vh;
+  .card-details img{
+    width: 25%;
+    height: 35%;
+  }
+  .card-details .card-body{
+    width: 30%;
+    height: 30%;
+    background-color: #0b151b !important;
+  }
+  .card-details {
+    background-color: #0b151b !important;
+    align-items: center;
+  }
+  .card-estilo{
+    width: 25rem!important;
   }
 }

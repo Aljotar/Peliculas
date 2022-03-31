@@ -18,8 +18,13 @@ import ProfileAdmin from "./pages/admin/ProfileAdmin";
 import { leerDeLocalStorage } from "./utils/localStorage";
 import { NavbarMain } from "./Components/navbarMain/NavbarMain";
 
+import { useLocalStorage } from "./hooks/useLocalStorage";
+import Favorite from "./pages/Favorite";
+
 function App() {
   const tokenLocalData = leerDeLocalStorage("token") || {};
+
+  const [favorites, setFavorites] = useLocalStorage('favorites', []);
 
   const [user, setUser] = useState({});
   const [usuarios, setUsuarios] = useState([]);
@@ -95,6 +100,12 @@ function App() {
 
         <Route path="/register">
           <Register />
+        </Route>
+
+        <Route path="/favorite" >
+          <Favorite
+            favorites={favorites}
+            setFavorites={setFavorites}/>
         </Route>
 
         {tokenLocalData.token && (

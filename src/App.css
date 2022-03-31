@@ -102,6 +102,7 @@ body {
 .card-estilo {
   border-style: none !important;
   box-shadow: 1px 1px 5px rgb(17, 17, 17);
+  position: relative;
 }
 .card-name {
   background-color: #0b151b;
@@ -118,6 +119,13 @@ body {
 .card-img-bottom {
   border: none;
 }
+.stars{
+  position: absolute;
+  color: rgb(248, 248, 70);
+  bottom: 16%;
+  right: 5%;
+  background-color: rgb(0, 0, 0,0.4);
+}
 .row .col .card {
   border: none;
 }
@@ -133,6 +141,10 @@ body {
 }
 .card-details p {
   font-weight: 600;
+}
+
+.card-estilo .estilo-fav{
+  background-color: #0b151b;
 }
 
 @media screen and (min-width: 880px) {

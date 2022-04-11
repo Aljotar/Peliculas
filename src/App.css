@@ -45,13 +45,13 @@ body {
     color: #0b151b;
 }
 .search-movie .form-control{
-   background-color: #e74646;
+   background-color: #568cd7;
    border: none;
    box-shadow: 1px 1px 5px rgb(29, 29, 29);
 }
 
 .search-movie .btn-primary{
-    background-color: #d46558;
+    background-color: #6b62e6;
     box-shadow: 1px 1px 5px rgb(29, 29, 29);
     border: none;
 
